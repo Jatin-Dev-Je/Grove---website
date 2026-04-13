@@ -3,6 +3,8 @@ import BackgroundAnimation from "@/components/BackgroundAnimation";
 import styles from "./page.module.css";
 
 export default function Home() {
+  const proofPoints = ["Auto-captured context", "Private by default", "Works with your AI stack"];
+
   const capabilities = [
     {
       title: "Ambient Capture",
@@ -91,6 +93,9 @@ export default function Home() {
           <a href="#proof">Proof</a>
           <a href="#waitlist">Waitlist</a>
         </nav>
+        <a className={styles.navCta} href="#waitlist">
+          Request Access
+        </a>
       </header>
 
       <main className={styles.main}>
@@ -105,6 +110,14 @@ export default function Home() {
               Grove continuously builds operational memory from your work and delivers relevant context
               exactly when your team needs it.
             </p>
+
+            <div className={styles.proofChips}>
+              {proofPoints.map((point) => (
+                <span key={point} className={styles.proofChip}>
+                  {point}
+                </span>
+              ))}
+            </div>
 
             <div className={styles.ctaRow}>
               <a className={styles.primaryBtn} href="#waitlist">
