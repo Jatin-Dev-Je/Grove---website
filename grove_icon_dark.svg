@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+
+  <!-- Background tile -->
+  <rect width="200" height="200" fill="#080808" rx="44"/>
+
+  <!-- Inner tile -->
+  <rect x="18" y="18" width="164" height="164" rx="36" fill="#111111"/>
+
+  <!-- Grove canopy layers — layered depth effect -->
+
+  <!-- Shadow/base layer -->
+  <path d="M100 148 L56 98 L100 107 L144 98 Z" fill="white" opacity="0.15"/>
+
+  <!-- Layer 3 — widest mid -->
+  <path d="M100 128 L60 86 L100 93 L140 86 Z" fill="white" opacity="0.35"/>
+
+  <!-- Layer 2 — mid -->
+  <path d="M100 108 L64 70 L100 76 L136 70 Z" fill="white" opacity="0.65"/>
+
+  <!-- Layer 1 — top, sharpest -->
+  <path d="M100 86 L68 50 L100 55 L132 50 Z" fill="white" opacity="0.96"/>
+
+  <!-- Trunk -->
+  <rect x="94" y="148" width="12" height="24" rx="4" fill="white" opacity="0.6"/>
+
+  <!-- Ground -->
+  <rect x="72" y="170" width="56" height="4" rx="2" fill="white" opacity="0.15"/>
+
+</svg>
