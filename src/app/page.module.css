@@ -75,6 +75,9 @@
 }
 
 .navbar {
+  position: sticky;
+  top: 12px;
+  z-index: 20;
   max-width: 1140px;
   margin: 0 auto;
   padding: 10px 14px;
@@ -84,10 +87,27 @@
   backdrop-filter: blur(18px) saturate(160%);
   -webkit-backdrop-filter: blur(18px) saturate(160%);
   box-shadow: 0 14px 38px rgba(10, 30, 54, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.38);
+  overflow: hidden;
+  isolation: isolate;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+}
+
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: -160% -40%;
+  z-index: -1;
+  background: conic-gradient(
+    from 90deg,
+    rgba(255, 255, 255, 0) 0deg,
+    rgba(255, 255, 255, 0.58) 72deg,
+    rgba(255, 255, 255, 0.1) 130deg,
+    rgba(255, 255, 255, 0) 220deg
+  );
+  animation: navbarSweep 11s linear infinite;
 }
 
 .brand {
@@ -98,6 +118,10 @@
   font-weight: 700;
   font-size: 1rem;
   color: #091018;
+}
+
+.brand span {
+  letter-spacing: 0.01em;
 }
 
 .navLinks {
@@ -125,6 +149,29 @@
 .navLinks a:hover {
   color: #0f6fff;
   background: rgba(255, 255, 255, 0.62);
+}
+
+.heroPanel,
+.panelCard,
+.statCard,
+.featureCard,
+.steps article,
+.useCaseCard,
+.faqCard {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.panelCard:hover,
+.statCard:hover,
+.featureCard:hover,
+.steps article:hover,
+.useCaseCard:hover,
+.faqCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(22, 99, 183, 0.24);
+  box-shadow: 0 12px 28px rgba(11, 43, 76, 0.1);
 }
 
 .main {
@@ -533,6 +580,15 @@
   }
 }
 
+@keyframes navbarSweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (max-width: 1060px) {
   .hero {
     grid-template-columns: 1fr;
@@ -555,6 +611,11 @@
 }
 
 @media (max-width: 760px) {
+  .navbar {
+    top: 8px;
+    border-radius: 22px;
+  }
+
   .navLinks {
     gap: 10px;
   }
@@ -577,5 +638,23 @@
   .logoStrip,
   .waitlistRow {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar::before,
+  .auroraA,
+  .auroraB,
+  .meshGlow {
+    animation: none;
+  }
+
+  .panelCard:hover,
+  .statCard:hover,
+  .featureCard:hover,
+  .steps article:hover,
+  .useCaseCard:hover,
+  .faqCard:hover {
+    transform: none;
   }
 }
