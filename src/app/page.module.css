@@ -77,11 +77,13 @@
 .navbar {
   max-width: 1140px;
   margin: 0 auto;
-  padding: 12px 16px;
-  border-radius: 14px;
-  border: 1px solid rgba(10, 22, 36, 0.08);
-  background: rgba(255, 255, 255, 0.68);
-  backdrop-filter: blur(12px);
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(10, 22, 36, 0.1);
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.48));
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: 0 14px 38px rgba(10, 30, 54, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.38);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -101,17 +103,28 @@
 .navLinks {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 6px;
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid rgba(12, 30, 48, 0.08);
+  background: rgba(255, 255, 255, 0.42);
 }
 
 .navLinks a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
   font-size: 0.88rem;
   color: rgba(12, 25, 38, 0.78);
-  transition: color 160ms ease;
+  transition: color 160ms ease, background-color 160ms ease;
 }
 
 .navLinks a:hover {
   color: #0f6fff;
+  background: rgba(255, 255, 255, 0.62);
 }
 
 .main {
