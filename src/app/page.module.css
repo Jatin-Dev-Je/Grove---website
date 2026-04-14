@@ -153,6 +153,15 @@
   background: rgba(255, 255, 255, 0.62);
 }
 
+.navLinks a:focus-visible,
+.navCta:focus-visible,
+.primaryBtn:focus-visible,
+.secondaryBtn:focus-visible,
+.waitlistRow input:focus-visible {
+  outline: 2px solid rgba(18, 113, 212, 0.88);
+  outline-offset: 2px;
+}
+
 .navCta {
   display: inline-flex;
   align-items: center;
@@ -213,6 +222,27 @@
 .heroCopy {
   display: grid;
   gap: 18px;
+}
+
+.heroCopy > * {
+  opacity: 0;
+  animation: riseIn 560ms ease forwards;
+}
+
+.heroCopy > *:nth-child(2) {
+  animation-delay: 90ms;
+}
+
+.heroCopy > *:nth-child(3) {
+  animation-delay: 180ms;
+}
+
+.heroCopy > *:nth-child(4) {
+  animation-delay: 260ms;
+}
+
+.heroCopy > *:nth-child(5) {
+  animation-delay: 320ms;
 }
 
 .kicker {
@@ -316,6 +346,26 @@
   align-self: start;
 }
 
+.signalRow {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.signalRow span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(13, 75, 142, 0.18);
+  background: rgba(225, 241, 255, 0.62);
+  color: rgba(12, 45, 77, 0.82);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+}
+
 .panelLine {
   display: flex;
   justify-content: space-between;
@@ -381,13 +431,27 @@
 .logoStrip {
   margin-top: clamp(34px, 6vw, 58px);
   border-block: 1px solid rgba(10, 22, 36, 0.1);
-  padding: 14px 2px;
+  padding: 14px 2px 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.logoLabel {
+  text-align: center;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.68rem;
+  color: rgba(14, 69, 124, 0.66);
+}
+
+.logoGrid {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 8px;
 }
 
-.logoStrip p {
+.logoGrid p {
   text-align: center;
   font-family: var(--font-display);
   color: rgba(12, 25, 38, 0.55);
@@ -578,10 +642,19 @@
   line-height: 1.06;
 }
 
+.waitlistNote {
+  color: rgba(12, 25, 38, 0.72);
+  max-width: 52ch;
+}
+
 .waitlistRow {
   display: grid;
   grid-template-columns: minmax(0, 320px) auto;
   gap: 10px;
+}
+
+.waitlistRow .primaryBtn {
+  border: none;
 }
 
 .waitlistRow input {
@@ -656,6 +729,17 @@
   }
 }
 
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 1060px) {
   .hero {
     grid-template-columns: 1fr;
@@ -672,7 +756,7 @@
   .useCaseGrid,
   .faqGrid,
   .statRow,
-  .logoStrip {
+  .logoGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -692,10 +776,18 @@
   .navLinks {
     flex: initial;
     gap: 10px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .navLinks::-webkit-scrollbar {
+    display: none;
   }
 
   .navLinks a {
     font-size: 0.78rem;
+    white-space: nowrap;
   }
 
   .navCta {
@@ -713,7 +805,7 @@
   .useCaseGrid,
   .faqGrid,
   .statRow,
-  .logoStrip,
+  .logoGrid,
   .waitlistRow {
     grid-template-columns: 1fr;
   }
@@ -723,8 +815,10 @@
   .navbar::before,
   .auroraA,
   .auroraB,
-  .meshGlow {
+  .meshGlow,
+  .heroCopy > * {
     animation: none;
+    opacity: 1;
   }
 
   .panelCard:hover,

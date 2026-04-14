@@ -3,7 +3,14 @@ import BackgroundAnimation from "@/components/BackgroundAnimation";
 import styles from "./page.module.css";
 
 export default function Home() {
-  const proofPoints = ["Auto-captured context", "Private by default", "Works with your AI stack"];
+  const proofPoints = [
+    "Auto-captured context",
+    "Private by default",
+    "Works with your AI stack",
+    "Team memory that compounds",
+  ];
+
+  const signalBadges = ["Context: High", "Latency: Low", "Privacy: Local-first"];
 
   const capabilities = [
     {
@@ -134,6 +141,11 @@ export default function Home() {
               <span>Memory Stream</span>
               <strong>Live</strong>
             </div>
+            <div className={styles.signalRow}>
+              {signalBadges.map((badge) => (
+                <span key={badge}>{badge}</span>
+              ))}
+            </div>
             <div className={styles.panelCard}>
               <h3>Decision context assembled</h3>
               <p>6 related discussions, 2 prior experiments, and 1 production incident attached.</p>
@@ -159,9 +171,12 @@ export default function Home() {
         </section>
 
         <section className={styles.logoStrip} aria-label="Compatible workflow tools">
-          {logos.map((logo) => (
-            <p key={logo}>{logo}</p>
-          ))}
+          <p className={styles.logoLabel}>Built to work with the tools your team already ships with.</p>
+          <div className={styles.logoGrid}>
+            {logos.map((logo) => (
+              <p key={logo}>{logo}</p>
+            ))}
+          </div>
         </section>
 
         <section id="capabilities" className={styles.featuresSection}>
@@ -236,12 +251,25 @@ export default function Home() {
         <section id="waitlist" className={styles.waitlist}>
           <p>Private Beta</p>
           <h2>Deploy modern memory infrastructure before public launch.</h2>
-          <div className={styles.waitlistRow}>
-            <input type="email" placeholder="you@company.com" aria-label="Email address" />
-            <a className={styles.primaryBtn} href="mailto:hello@grove.ai?subject=Grove%20Private%20Beta">
+          <p className={styles.waitlistNote}>Limited onboarding cohorts. Priority given to product and AI teams.</p>
+          <form
+            className={styles.waitlistRow}
+            action="mailto:hello@grove.ai?subject=Grove%20Private%20Beta"
+            method="post"
+            encType="text/plain"
+          >
+            <input
+              type="email"
+              name="email"
+              placeholder="you@company.com"
+              aria-label="Email address"
+              autoComplete="email"
+              required
+            />
+            <button className={styles.primaryBtn} type="submit">
               Join Waitlist
-            </a>
-          </div>
+            </button>
+          </form>
         </section>
 
         <footer className={styles.footer}>
