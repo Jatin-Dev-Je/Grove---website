@@ -12,6 +12,42 @@ export default function Home() {
 
   const signalBadges = ["Context: High", "Latency: Low", "Privacy: Local-first"];
 
+  const operatingPrinciples = [
+    {
+      title: "Governance by design",
+      description:
+        "Memory objects carry source, timestamp, and ownership metadata so teams can trust what AI uses.",
+    },
+    {
+      title: "Context over prompts",
+      description:
+        "Instead of prompt gymnastics, Grove composes decision history, constraints, and intent before generation starts.",
+    },
+    {
+      title: "Progressive adoption",
+      description:
+        "Start with one workflow, then expand to product, research, and engineering without replacing your toolchain.",
+    },
+  ];
+
+  const rolloutPlan = [
+    {
+      phase: "Week 1",
+      title: "Connect and Capture",
+      description: "Instrument workspaces and establish baseline memory coverage across critical projects.",
+    },
+    {
+      phase: "Week 2",
+      title: "Model and Validate",
+      description: "Review graph quality, align entities, and tune retrieval against real team decisions.",
+    },
+    {
+      phase: "Week 3",
+      title: "Ship with Context",
+      description: "Enable production workflows where every AI interaction is grounded in verified organizational memory.",
+    },
+  ];
+
   const capabilities = [
     {
       title: "Ambient Capture",
@@ -96,6 +132,8 @@ export default function Home() {
         </div>
         <nav className={styles.navLinks}>
           <a href="#capabilities">Capabilities</a>
+          <a href="#principles">Principles</a>
+          <a href="#rollout">Rollout</a>
           <a href="#workflows">Workflows</a>
           <a href="#proof">Proof</a>
           <a href="#waitlist">Waitlist</a>
@@ -133,6 +171,17 @@ export default function Home() {
               <a className={styles.secondaryBtn} href="#capabilities">
                 View Capabilities
               </a>
+            </div>
+
+            <div className={styles.heroMetaRow}>
+              <article className={styles.heroMetaCard}>
+                <p>Deployment model</p>
+                <strong>Local-first architecture</strong>
+              </article>
+              <article className={styles.heroMetaCard}>
+                <p>Team readiness</p>
+                <strong>Works from day one with existing stack</strong>
+              </article>
             </div>
           </div>
 
@@ -218,6 +267,37 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="principles" className={styles.principlesSection}>
+          <div className={styles.sectionHeading}>
+            <p>Operating Principles</p>
+            <h2>Designed for teams that need trust, speed, and durable execution quality.</h2>
+          </div>
+          <div className={styles.principlesGrid}>
+            {operatingPrinciples.map((item) => (
+              <article key={item.title} className={styles.principleCard}>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="rollout" className={styles.rolloutSection}>
+          <div className={styles.sectionHeading}>
+            <p>Rollout</p>
+            <h2>A practical adoption path for serious teams.</h2>
+          </div>
+          <div className={styles.rolloutGrid}>
+            {rolloutPlan.map((item) => (
+              <article key={item.phase} className={styles.rolloutCard}>
+                <span>{item.phase}</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section id="workflows" className={styles.useCases}>
           <div className={styles.sectionHeading}>
             <p>Workflows</p>
@@ -277,7 +357,14 @@ export default function Home() {
             <Image src="/grove_icon_dark.svg" alt="Grove logo" width={28} height={28} />
             <span>Grove</span>
           </div>
-          <p>Designed for intentional work. Built for long-term memory.</p>
+          <div className={styles.footerMeta}>
+            <p>Designed for intentional work. Built for long-term memory.</p>
+            <div className={styles.footerLinks}>
+              <a href="#">Security</a>
+              <a href="#">Privacy</a>
+              <a href="mailto:hello@grove.ai">Contact</a>
+            </div>
+          </div>
         </footer>
       </main>
     </div>
